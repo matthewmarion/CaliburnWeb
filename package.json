@@ -15,7 +15,6 @@
     "express-handlebars": "^3.0.0",
     "mongoose": "^4.10.8",
     "morgan": "~1.8.1",
-    "serve-favicon": "~2.4.2",
     "snoostorm": "0.0.5",
     "snoowrap": "^1.14.2",
     "strict-mode": "^1.1.2",
