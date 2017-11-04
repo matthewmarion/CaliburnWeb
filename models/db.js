@@ -1,6 +1,11 @@
 let mongoose = require('mongoose');
 let gracefulShutdown;
 let dbURI = 'mongodb://localhost/CaliburnWeb';
+
+if (process.env.NODE_ENV === 'production') {
+    dbURI = 'mongodb://admin:G1g$zdI4kByPX*ovd*T1@ds149335.mlab.com:49335/heroku_phkv7k8q';
+}
+
 mongoose.connect(dbURI);
 
 let readLine = require('readline');
