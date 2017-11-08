@@ -1,3 +1,12 @@
+let request = require('request');
+let apiOptions = {
+	server: 'http://localhost:3000'
+};
+
+if (process.env.NODE_ENV === 'production') {
+	apiOptions.server = 'https://caliburn-web.herokuapp.com';
+}
+
 exports.news_list = function(req, res) {
 	res.render('news', { 
 		title: 'News',

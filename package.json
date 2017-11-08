@@ -15,9 +15,10 @@
     "express-handlebars": "^3.0.0",
     "mongoose": "^4.10.8",
     "morgan": "~1.8.1",
+    "readline": "0.0.x",
+    "request": "^2.83.0",
     "snoostorm": "0.0.5",
     "snoowrap": "^1.14.2",
-    "strict-mode": "^1.1.2",
-    "readline": "0.0.x"
+    "strict-mode": "^1.1.2"
   }
 }
