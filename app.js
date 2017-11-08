@@ -5,10 +5,10 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const hbs = require('express-handlebars');
-require('./models/db');
+require('./api/models/db');
 
 const routes = require('./routes/index');
-const routesApi = require('./routes/index');
+const routesApi = require('./api/routes/index');
 const redditService = require('./services/news/redditService');
 const utils = require('./utils');
 
@@ -25,8 +25,7 @@ app.engine('hbs', hbs({extname: 'hbs', defaultLayout: 'layout', layoutsDir: __di
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
