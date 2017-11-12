@@ -8,10 +8,13 @@ body {
 }
 
 .navbar-dark {
-  background-color: #01002b;
-  font-family: 'Open Sans' sans-serif;
+  	background-color: transparent;
+  	font-family: 'Open Sans' sans-serif;
 	padding: 15px 15% 15px 15%;
-	box-shadow: 1px 2px 10px #000;
+}
+
+.navbar-brand {
+	margin: 0;
 }
 
 .nav-link {
@@ -21,7 +24,7 @@ body {
 }
 
 .nav-item {
-	padding: 0 50px 0 50px;
+	margin: 0 70px;
 }
 
 .nav-store {
@@ -34,7 +37,7 @@ body {
 }
 
 .navbar-collapse {
-	margin-left: 5%;
+	margin-left: 11.7%;
 	position: relative;
 }
 
