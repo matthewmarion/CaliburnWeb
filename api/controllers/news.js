@@ -1,5 +1,4 @@
-let mongoose = require('mongoose').set('debug', true);
-mongoose.Promise = global.Promise;
+let mongoose = require('mongoose');
 let newsPosts = mongoose.model('NewsPost');
 
 let sendJsonResponse = function(res, status, content) {
