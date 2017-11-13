@@ -24,7 +24,7 @@ module.exports.newsPostList = function(req, res) {
     let foundPosts = [];
     newsPosts.find({}, function(err, posts) {
         posts.forEach(function(post) {
-            foundPosts.push(post)
+            foundPosts.unshift(post)
         });
         sendJsonResponse(res, 200, foundPosts);
     }); 
