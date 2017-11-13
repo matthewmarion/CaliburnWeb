@@ -21,7 +21,13 @@ module.exports.createNewsPost = function(req, res) {
 };
 
 module.exports.newsPostList = function(req, res) {
-    sendJsonResponse(res, 200, {'status': 'success'});
+    let foundPosts = [];
+    newsPosts.find({}, function(err, posts) {
+        posts.forEach(function(post) {
+            foundPosts.push(post)
+        });
+        sendJsonResponse(res, 200, foundPosts);
+    }); 
 };
 
 module.exports.newsPostReadOne = function(req, res) {

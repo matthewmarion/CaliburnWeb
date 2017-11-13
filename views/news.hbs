@@ -1,9 +1,9 @@
 <div class="news-content">
     {{#each post}}
     <div class="post">
-            <h2 class='post-title'>{{title}}</h2>
-            <p class='post-info'>Posted by <span id='author'>{{author}}</span> {{time_posted}}</p>
-            <div class="post-content">{{{content}}}</div>
+            <h2 class='post-title'>{{this.title}}</h2>
+            <p class='post-info'>Posted by <span id='author'>{{this.author}}</span> 5 min ago</p>
+            <div class="post-content">{{{this.content}}}</div>
     </div>
     {{/each}}
 </div>
