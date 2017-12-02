@@ -15,7 +15,7 @@ let renderNews = function(req, res, responseBody) {
 	console.log('Response body: ' + responseBody.length);
 };
 
-exports.news_list = function(req, res) {
+module.exports.news_list = function(req, res) {
 	let requestOptions, path;
 	path = '/api/news';
 	requestOptions = {
@@ -28,3 +28,7 @@ exports.news_list = function(req, res) {
 		}
 	); 
 };
+
+module.exports.addNewsPost = function(req, res) {
+
+}
