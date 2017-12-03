@@ -7,10 +7,14 @@ body {
   color: white;
 }
 
+.container {
+	width: 1500px;
+}
+
 .navbar-dark {
+	margin-top: 1%;
   	background-color: transparent;
   	font-family: 'Open Sans' sans-serif;
-	padding: 15px 15% 15px 15%;
 }
 
 .navbar-brand {
@@ -27,17 +31,12 @@ body {
 	margin: 0 70px;
 }
 
-.nav-store {
-	background-color: #ff7f7d;
-	border-radius: 10%;
-}
-
 #navbarSupportedContent ul li a:hover { 
 	color:#ff7f7d;
 }
 
 .navbar-collapse {
-	margin-left: 11.7%;
+	margin-left: 6%;
 	position: relative;
 }
 
@@ -71,6 +70,6 @@ body {
 }
 
 .news-content {
-	margin: 3% 15% 3% 15%;
+	margin-top: 2%;
 	font-size: 1em;
 }
