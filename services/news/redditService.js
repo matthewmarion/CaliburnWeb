@@ -2,6 +2,7 @@
 require('dotenv').config();
 const Snoowrap = require('snoowrap');
 const Snoostorm = require('snoostorm');
+const request = require('request');
 
 const reddit = new Snoowrap({
 	userAgent: 'reddit.us.caliburn.1.0.0',
@@ -37,13 +38,19 @@ redditData.filterPostRequirements = function(submission) {
 		console.log('Post is not defined to be a news post.');
 		return;
 	}
+	let title = removeStar(submission.title);
+	request.post('http://localhost:3000/api/news/', { json: {
+		url: submission.url,
+		author: submission.author.name,
+		title: title,
+		content: submission.selftext_html
+	}});
+}
 
-	console.log('[News submission] author: ' + submission.author.name);
-	console.log('[News submission] title: ' + submission.title);
-	console.log('[News submission] content: ' + submission.selftext);
-
-	redditData.postTitle = submission.title;
-	redditData.postSelfText = submission.selftext;
+function removeStar(post) {
+	if (post.charAt(0) === '*') {
+		return post.substring(1, post.length);
+	}
 }
 
 module.exports = redditData;

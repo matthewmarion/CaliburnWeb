@@ -8,6 +8,7 @@ let sendJsonResponse = function(res, status, content) {
 
 module.exports.createNewsPost = function(req, res) {
     newsPosts.create({
+        url: req.body.url,
         author: req.body.author,
         title: req.body.title,
         content: req.body.content

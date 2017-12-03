@@ -10,13 +10,9 @@ require('./api/models/db');
 const routes = require('./routes/index');
 const routesApi = require('./api/routes/index');
 const redditService = require('./services/news/redditService');
-const utils = require('./utils');
-
 let app = express();
-//(submission) => redditService.filterPostRequirements(submission)
+
 redditService.submissions.on('submission', function(submission) {
-	let date = utils.date();
-	console.log(date);
 	redditService.filterPostRequirements(submission);
 });
 
