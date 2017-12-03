@@ -48,9 +48,13 @@ redditData.filterPostRequirements = function(submission) {
 }
 
 function removeStar(post) {
+	if (post == null) {
+		return null;
+	}
 	if (post.charAt(0) === '*') {
 		return post.substring(1, post.length);
 	}
+	return post;
 }
 
 module.exports = redditData;
