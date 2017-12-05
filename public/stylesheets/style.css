@@ -24,7 +24,8 @@ body {
 }
 
 #navbarSupportedContent ul li a:hover,.navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show>.nav-link { 
-	color:#da3555;
+	color:#fff;
+	background-color: rgb(64, 81, 173);
 }
 .navbar-dark .navbar-nav .nav-link {
     color: #fff;
@@ -33,12 +34,10 @@ body {
 li.nav-item {
     margin: 0px 30px;
 }
-.navbar-dark .navbar-brand {
-    margin-right: 100px;
-}
+
 .post-title {
 	margin-bottom: 0;
-	color: #da3555;
+	color: #ff7f7d;
 	display: inline;
 }
 
@@ -60,7 +59,6 @@ ul.list-inline.sc-list li a:hover {
 }
 ul.list-inline.sc-list {
     margin-bottom: 0;
-    margin-right: auto;
 }
 .post-content h1{
 	font-size: 1.2em;
