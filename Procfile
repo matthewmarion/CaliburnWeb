@@ -1,1 +1,2 @@
-worker: node app.js NODE_ENV=production
+web: npm start
+heroku config: set NODE_ENV=production
