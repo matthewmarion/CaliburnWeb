@@ -44,7 +44,7 @@ redditData.filterPostRequirements = function(submission) {
 		return;
 	}
 	let title = removeStar(submission.title);
-	request.post('http://localhost:3000/api/news/', { json: {
+	request.post(postUrl, { json: {
 		url: submission.url,
 		author: submission.author.name,
 		title: title,
