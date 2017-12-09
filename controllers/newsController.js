@@ -54,8 +54,6 @@ module.exports.addNewsPost = function(req, res) {
 		json: postdata
 	};
 
-	console.log("TRYING TO POST TO: " + requestOptions.url);
-
 	request(requestOptions, function(err, response, body) {
 		if (response.statusCode != 201) {
 			_showError(req, res, response.statusCode);

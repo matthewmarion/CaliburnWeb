@@ -3,6 +3,7 @@ require('dotenv').config();
 const Snoowrap = require('snoowrap');
 const Snoostorm = require('snoostorm');
 const request = require('request');
+let postUrl = 'http://localhost:3000/api/news/';
 
 const reddit = new Snoowrap({
 	userAgent: 'reddit.us.caliburn.1.0.0',
@@ -24,6 +25,10 @@ const redditData = {};
 redditData.submissions = client.SubmissionStream(redditStreamOpts);
 
 redditData.filterPostRequirements = function(submission) {
+	if (process.env.NODE_ENV == 'production') {
+		postUrl = 'https://caliburn-web.herokuapp.com/api/news';
+		console.log('Changing POST URL');
+	}
 	if (!submission.can_mod_post) {
 		console.log('Poster is not MOD.');
 		return;
