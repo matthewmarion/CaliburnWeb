@@ -4,6 +4,7 @@ let dbURI = 'mongodb://localhost/caliburnweb';
 
 if (process.env.NODE_ENV === 'production') {
     dbURI = 'mongodb://admin:G1g$zdI4kByPX*ovd*T1@ds149335.mlab.com:49335/heroku_phkv7k8q';
+    console.log("CONNECTED TO MONGO FOR PRODUCTION");
 }
 
 mongoose.connect(dbURI);

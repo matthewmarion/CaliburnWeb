@@ -1,11 +1,9 @@
 let request = require('request');
-
-let apiOptions = {
-	server: 'http://localhost:3000'
-};
+let server = 'http://localhost:3000'
 
 if (process.env.NODE_ENV === 'production') {
-	apiOptions.server = 'https://caliburn-web.herokuapp.com';
+	server = 'https://caliburn-web.herokuapp.com';
+	console.log("CHANGING SERVER TO PRODUCTION");
 }
 
 let renderNews = function(req, res, responseBody) {
@@ -29,7 +27,7 @@ module.exports.news_list = function(req, res) {
 	let requestOptions, path;
 	path = '/api/news';
 	requestOptions = {
-		url: apiOptions.server + path,
+		url: server + path,
 		method: 'GET',
 		json: {}
 	};
@@ -51,7 +49,7 @@ module.exports.addNewsPost = function(req, res) {
 	};
 
 	requestOptions = {
-		url: apiOptions.server + path,
+		url: server + path,
 		method: "POST",
 		json: postdata
 	};
