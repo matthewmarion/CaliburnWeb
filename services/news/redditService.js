@@ -34,12 +34,12 @@ redditData.filterPostRequirements = function(submission) {
 		return;
 	}
 
-	if (submission.selftext === '') {
+	if (postIsEmpty(submission)) {
 		console.log('Empty text post.');
 		return;
 	}
 
-	if (submission.title.substring(0, 1) !== '*') {
+	if (!postContainsStar(submission)) {
 		console.log('Post is not defined to be a news post.');
 		return;
 	}
@@ -52,7 +52,21 @@ redditData.filterPostRequirements = function(submission) {
 	}});
 }
 
-function removeStar(post) {
+function postIsEmpty(submission) {
+	if (submission.selftext === '') {
+		return true;
+	}
+	return false;
+}
+
+function postContainsStar(submission) {
+	if (submission.title.substring(0, 1) !== '*') {
+		return false;
+	}
+	return true;
+}
+
+function removeStar(submission) {
 	if (post == null) {
 		return null;
 	}
