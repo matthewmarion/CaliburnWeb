@@ -27,20 +27,16 @@ redditData.submissions = client.SubmissionStream(redditStreamOpts);
 redditData.filterPostRequirements = function(submission) {
 	if (process.env.NODE_ENV == 'production') {
 		postUrl = 'https://caliburn-web.herokuapp.com/api/news';
-		console.log('Changing POST URL');
 	}
 	if (!submission.can_mod_post) {
-		console.log('Poster is not MOD.');
 		return;
 	}
 
 	if (postIsEmpty(submission)) {
-		console.log('Empty text post.');
 		return;
 	}
 
 	if (!postContainsStar(submission)) {
-		console.log('Post is not defined to be a news post.');
 		return;
 	}
 	let title = removeStar(submission.title);
