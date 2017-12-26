@@ -32,11 +32,11 @@ redditData.filterPostRequirements = function(submission) {
 		return;
 	}
 
-	if (postIsEmpty(submission)) {
+	if (postIsEmpty(submission.selftext)) {
 		return;
 	}
 
-	if (!postContainsStar(submission)) {
+	if (!postContainsStar(submission.title)) {
 		return;
 	}
 	let title = removeStar(submission.title);
@@ -46,30 +46,30 @@ redditData.filterPostRequirements = function(submission) {
 		title: title,
 		content: submission.selftext_html
 	}});
-}
+};
 
-function postIsEmpty(submission) {
-	if (submission.selftext === '') {
+function postIsEmpty(post) {
+	if (post === '') {
 		return true;
 	}
 	return false;
 }
 
-function postContainsStar(submission) {
-	if (submission.title.substring(0, 1) !== '*') {
+function postContainsStar(title) {
+	if (title.substring(0, 1) !== '*') {
 		return false;
 	}
 	return true;
 }
 
-function removeStar(submission) {
-	if (post == null) {
+function removeStar(title) {
+	if (title == null) {
 		return null;
 	}
-	if (post.charAt(0) === '*') {
-		return post.substring(1, post.length);
+	if (title.charAt(0) === '*') {
+		return title.substring(1, title.length);
 	}
-	return post;
+	return title;
 }
 
 module.exports = redditData;
