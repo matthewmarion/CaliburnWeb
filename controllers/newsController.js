@@ -3,7 +3,7 @@ let server = 'http://localhost:3000'
 
 if (process.env.NODE_ENV === 'production') {
 	server = 'https://caliburn-web.herokuapp.com';
-	console.log("CHANGING SERVER TO PRODUCTION");
+	console.log('CHANGING SERVER TO PRODUCTION');
 }
 
 let renderNews = function(req, res, responseBody) {
@@ -60,5 +60,5 @@ module.exports.addNewsPost = function(req, res) {
 			return;
 		}
 		res.redirect('/news');
-	})
+	});
 }

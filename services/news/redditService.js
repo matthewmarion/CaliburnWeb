@@ -40,18 +40,70 @@ redditData.filterPostRequirements = function(submission) {
 		return;
 	}
 	let title = removeStar(submission.title);
+	let metaTitle = getMetaTitle(submission.selftext.toString());
+	let metaSubtitle = getMetaSubtitle(submission.selftext.toString());
+	getMetaTitle(submission.selftext.toString());
 	request.post(postUrl, { json: {
 		url: submission.url,
 		author: submission.author.name,
 		title: title,
-		content: submission.selftext_html
+		content: submission.selftext_html,
+		metaTitle: metaTitle,
+		metaSubtitle: metaSubtitle
 	}});
 };
+
+function getMetaTitle(content) {
+	let lines = content.toString().split('\n');
+	for (let i = 0; i < lines.length; i++) {
+		let metaDataStructure = lines[i].split(':');
+		let key = metaDataStructure[0];
+		let value = metaDataStructure[1].trim();
+		if (value == null) {
+			continue;
+		}
+		if (!isTitleKey(key)) {
+			continue;
+		}
+		return value;
+	}
+}
+
+function getMetaSubtitle(content) {
+	let lines = content.toString().split('\n');
+	for (let i = 0; i < lines.length; i++) {
+		let metaDataStructure = lines[i].split(':');
+		let key = metaDataStructure[0];
+		let value = metaDataStructure[1].trim();
+		if (value == null) {
+			continue;
+		}
+		if (!isSubtitleKey(key)) {
+			continue;
+		}
+		return value;
+	}
+}
+
+function isTitleKey(key) {
+	if (key === 'title') {
+		return true;
+	}
+	return false;
+}
+
+function isSubtitleKey(key) {
+	if (key === 'subtitle') {
+		return true;
+	}
+	return false;
+}
 
 function postIsEmpty(post) {
 	if (post === '') {
 		return true;
 	}
+
 	return false;
 }
 
@@ -69,6 +121,7 @@ function removeStar(title) {
 	if (title.charAt(0) === '*') {
 		return title.substring(1, title.length);
 	}
+
 	return title;
 }
 
