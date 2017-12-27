@@ -40,32 +40,45 @@ redditData.filterPostRequirements = function(submission) {
 		return;
 	}
 	let title = removeStar(submission.title);
-	let metaTitle = getMetaTitle(submission.selftext.toString());
-	let metaSubtitle = getMetaSubtitle(submission.selftext.toString());
+	let metaTitle = getMetaTitle(submission.selftext);
+	let metaSubtitle = getMetaSubtitle(submission.selftext);
+	let content = filteredContent(submission.selftext_html);
 	getMetaTitle(submission.selftext.toString());
 	request.post(postUrl, { json: {
 		url: submission.url,
 		author: submission.author.name,
 		title: title,
-		content: submission.selftext_html,
+		content: content,
 		metaTitle: metaTitle,
 		metaSubtitle: metaSubtitle
 	}});
 };
+
+function filteredContent(content) {
+	//</p>\n\n<p>NEWS METADATA<br/>\ntitle:MAP ONE<br/>\nsubtitle:LIVE</p>\n
+	let lines = content.toString().split('\n');
+	for (let i = 0; i < lines.length; i++) {
+		if (lines[i].includes('NEWS METADATA') || lines[i].startsWith('title:') || lines[i].startsWith('subtitle')) {
+			lines[i] = '';
+			continue;
+		}
+	}
+	return lines.join('');
+}
 
 function getMetaTitle(content) {
 	let lines = content.toString().split('\n');
 	for (let i = 0; i < lines.length; i++) {
 		let metaDataStructure = lines[i].split(':');
 		let key = metaDataStructure[0];
-		let value = metaDataStructure[1].trim();
+		let value = metaDataStructure[1];
 		if (value == null) {
 			continue;
 		}
 		if (!isTitleKey(key)) {
 			continue;
 		}
-		return value;
+		return value.trim();
 	}
 }
 
@@ -74,14 +87,14 @@ function getMetaSubtitle(content) {
 	for (let i = 0; i < lines.length; i++) {
 		let metaDataStructure = lines[i].split(':');
 		let key = metaDataStructure[0];
-		let value = metaDataStructure[1].trim();
+		let value = metaDataStructure[1];
 		if (value == null) {
 			continue;
 		}
 		if (!isSubtitleKey(key)) {
 			continue;
 		}
-		return value;
+		return value.trim();
 	}
 }
 
