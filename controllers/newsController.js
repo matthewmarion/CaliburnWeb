@@ -20,7 +20,6 @@ let renderNews = function(req, res, responseBody) {
 		post: responseBody,
 		message: message
 	});
-	console.log('Response body: ' + responseBody.length);
 };
 
 module.exports.news_list = function(req, res) {
@@ -45,7 +44,9 @@ module.exports.addNewsPost = function(req, res) {
 		url: req.body.url,
 		author: req.body.name,
 		title: req.body.title,
-		content: req.body.selftext
+		content: req.body.selftext,
+		metaTitle: req.body.metaTitle,
+		metaSubtitle: req.body.metaSubtitle
 	};
 
 	requestOptions = {
@@ -61,4 +62,4 @@ module.exports.addNewsPost = function(req, res) {
 		}
 		res.redirect('/news');
 	});
-}
+};

@@ -5,7 +5,7 @@ var news_controller = require('../controllers/newsController');
 var leaderboards_controller = require('../controllers/leaderboardsController');
 var support_contrller = require('../controllers/supportController');
 
-router.get('/', index_controller.index);
+router.get('/', index_controller.homepage_variables);
 
 router.get('/news', news_controller.news_list);
 

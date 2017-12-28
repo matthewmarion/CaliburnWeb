@@ -55,7 +55,6 @@ redditData.filterPostRequirements = function(submission) {
 };
 
 function filteredContent(content) {
-	//</p>\n\n<p>NEWS METADATA<br/>\ntitle:MAP ONE<br/>\nsubtitle:LIVE</p>\n
 	let lines = content.toString().split('\n');
 	for (let i = 0; i < lines.length; i++) {
 		if (lines[i].includes('NEWS METADATA') || lines[i].startsWith('title:') || lines[i].startsWith('subtitle')) {
