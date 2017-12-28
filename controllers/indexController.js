@@ -12,11 +12,12 @@ exports.play = function(req, res) {
 
 let renderHome = function(req, res, responseBody) {
 	let message;
+	let defaultResponseBody = {
+		metaTitle: 'Welcome to',
+		metaSubtitle: 'Caliburn'
+	};
 	if (responseBody == null) {
-		responseBody = {
-			metaTitle: 'Welcome to',
-			metaSubtitle: 'Caliburn'
-		};
+		responseBody = defaultResponseBody;
 	}
 	res.render('index', {
 		title: 'Home',
